@@ -23,8 +23,10 @@ target/
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
+# Ignorar cualquier carpeta llamada dist, plugins o static en todo el proyecto
 **/dist/
 **/plugins/
+**/static/
 /nbdist/
 /.nb-gradle/
 build/
