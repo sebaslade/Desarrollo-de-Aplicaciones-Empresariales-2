@@ -19,9 +19,7 @@
   data-theme="theme-default"
   data-assets-path="../assets/"
   data-template="vertical-menu-template-free"
-  xmlns:th="http://www.thymeleaf.org" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  	xsi:schemaLocation="http://www.thymeleaf.org "
+  xmlns:th="http://www.thymeleaf.org"
 >
   <head>
     <meta charset="utf-8" />
@@ -41,7 +39,7 @@
     <link rel="preconnect" th:href="@{https://fonts.googleapis.com}" />
     <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin />
     <link
-      th:href="@{https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap}"
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
       rel="stylesheet"
     />
 
@@ -173,8 +171,6 @@
                 </li>
               </ul>
             </li>
-
-            
           </ul>
         </aside>
         <!-- / Menu -->
@@ -286,12 +282,101 @@
           </nav>
 
           <!-- / Navbar -->
-
           <!-- Content wrapper -->
           <div class="content-wrapper">
             <!-- Content -->
-            <div>
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Clientes /</span> Nuevo Cliente</h4>
+              <div class="row">
+                <div class="col-md-12">
+                    <div class="card mb-4">
+                        <h5 class="card-header">Datos del Cliente</h5>
+                        <form id="formAccountSettings" th:action="@{/cliente/registrar}" method="POST" th:object="${cliente}" enctype="multipart/form-data">
+                            <!-- Account -->
+                            <div class="card-body">
+                                <div class="d-flex align-items-start align-items-sm-center gap-4">
+                                    <img
+                                    src="../assets/img/avatars/1.png"
+                                    alt="user-avatar"
+                                    class="d-block rounded"
+                                    height="100"
+                                    width="100"
+                                    id="uploadedAvatar"
+                                    />
+                                    <div class="button-wrapper">
+                                    <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
+                                        <span class="d-none d-sm-block">Upload new photo</span>
+                                        <i class="bx bx-upload d-block d-sm-none"></i>
+                                        <input
+                                        type="file"
+                                        id="upload"
+                                        class="account-file-input"
+                                        hidden
+                                        accept="image/png, image/jpeg"
+                                        />
+                                    </label>
+                                    <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
+                                        <i class="bx bx-reset d-block d-sm-none"></i>
+                                        <span class="d-none d-sm-block">Reset</span>
+                                    </button>
 
+                                    <p class="text-muted mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Account -->
+                            <div class="card-body">
+                                <div class="row">
+                                <div class="mb-3 col-md-6">
+                                    <label for="firstName" class="form-label">Nombre</label>
+                                    <input
+                                    class="form-control"
+                                    type="text"
+                                    th:field="*{nombre}"
+                                    autofocus
+                                    />
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label for="zipCode" class="form-label">Apellido Paterno</label>
+                                    <input
+                                    type="text"
+                                    class="form-control"
+                                    id="zipCode"
+                                    th:field="*{apellidoPaterno}"
+                                    maxlength="6"
+                                    />
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label for="zipCode" class="form-label">Apellido Materno</label>
+                                    <input
+                                    type="text"
+                                    class="form-control"
+                                    id="zipCode"
+                                    th:field="*{apellidoMaterno}"
+                                    maxlength="6"
+                                    />
+                                </div>
+                                    <div class="mb-3 col-md-6">
+                                        <label class="form-label" for="phoneNumber">Dirección</label>
+                                        <input
+                                        type="text"
+                                        class="form-control"
+                                        id="zipCode"
+                                        th:field="*{direccion}"
+                                        maxlength="6"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="mt-2">
+                                    <button type="submit" class="btn btn-primary me-2">Grabar</button>
+                                    <button type="reset" class="btn btn-outline-secondary">Cancelar</button>
+                                </div>
+                            </div>
+                            <!-- /Account -->
+                        </form>
+                    </div>
+                </div>
+              </div>
             </div>
             <!-- / Content -->
 
@@ -302,9 +387,9 @@
                   ©
                   <script>
                     document.write(new Date().getFullYear());
-                  </script>
-                  , hecho por mi :)
-                  <a th:href="@{https://themeselection.com}" target="_blank" class="footer-link fw-bolder">ThemeSelection</a>
+                </script>
+                  , hecho por 
+                  <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">ISIL DAE 2</a>
                 </div>
               </div>
             </footer>
@@ -320,6 +405,7 @@
       <!-- Overlay -->
       <div class="layout-overlay layout-menu-toggle"></div>
     </div>
+    <!-- / Layout wrapper -->
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->

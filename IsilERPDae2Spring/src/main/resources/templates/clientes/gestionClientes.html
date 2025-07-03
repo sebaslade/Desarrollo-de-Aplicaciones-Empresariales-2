@@ -19,9 +19,6 @@
   data-theme="theme-default"
   data-assets-path="../assets/"
   data-template="vertical-menu-template-free"
-  xmlns:th="http://www.thymeleaf.org" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  	xsi:schemaLocation="http://www.thymeleaf.org "
 >
   <head>
     <meta charset="utf-8" />
@@ -290,9 +287,49 @@
           <!-- Content wrapper -->
           <div class="content-wrapper">
             <!-- Content -->
-            <div>
-
-            </div>
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Mantenimiento /</span> Clientes</h4>
+            <div class="card">
+                <h5 class="card-header">Gestion de Clientes</h5>
+                <div class="table-responsive text-nowrap">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Codigo</th>
+                        <th>Nombre</th>
+                        <th>Apellido Paterno</th>
+                        <th>Apellido Materno</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                      <tr th:each="cliente:${listaClientes}">
+                        <td th:text="${cliente.id}"></td>
+                        <td th:text="${cliente.nombre}"></td>
+                        <td th:text="${cliente.apellidoPaterno}"></td>
+                        <td th:text="${cliente.apellidoMaterno}"></td>
+                        <td th:text="${cliente.estado}"></td>
+                        <td>
+                              <a class="dropdown-item" th:href="@{/cliente/editar/{id}(id=${cliente.id})}"
+                                ><i class="bx bx-edit-alt me-1"></i> Editar
+                                </a>
+                              <a class="dropdown-item" th:href="@{/cliente/eliminar/{id}(id=${cliente.id})}"
+                                ><i class="bx bx-trash me-1"></i> Eliminar</a>
+                        </td>
+                      </tr>
+                      </tbody>
+                      </table>
+                      <br>
+                      <form th:action="@{/cliente/nuevo}" method="POST">
+                      <div class="mt-2">
+                          <button type="submit" class="btn btn-primary me-2">Nuevo</button>
+                        </div>
+                      </form>
+                      
+                      </div>
+                      </div>
+                      </div>
             <!-- / Content -->
 
             <!-- Footer -->
